@@ -25,7 +25,7 @@
 
   - name: Create VPC 
     ec2_vpc_net:
-      name: subnet1
+      name: vpc_net1
       cidr_block: 10.10.0.0/16
       region: "{{ aws_region }}" 
     register: my_vpc  
@@ -52,6 +52,15 @@
   - debug:
       msg: "Firewall group ID {{ firewall.group_id }}"
 
+  - name: Create subnet for database servers
+    ec2_vpc_subnet:
+      state: present
+      vpc_id: "{{ my_vpc.vpc.id }}"
+      cidr: 10.10.10.0/24
+      tags:
+        Name: Subnet
+    register: subnet
+
   - name: Create an EC2 instance
     ec2_instance:
       key_name: keypair_default
@@ -59,7 +68,7 @@
       security_group: "{{ firewall.group_id }}"
       instance_type: "t2.micro"
       image_id: "{{ ami_id }}"
-      vpc_subnet_id: "{{ my_vpc.vpc.id }}"
+      vpc_subnet_id: "{{ subnet }}"
       wait: yes
       name: vm-demo
     register: ec2
