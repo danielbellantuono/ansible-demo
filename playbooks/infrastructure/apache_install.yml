@@ -1,6 +1,7 @@
 ---
 - name: Apache server installed
   hosts: rhel_aws
+  user: root
 
   tasks:
   - name: latest Apache version installed
