@@ -46,6 +46,12 @@
           cidr_ip: 0.0.0.0/0
     register: firewall
 
+  - debug:
+      msg: "AWS region {{ aws_region }}"
+
+  - debug:
+      msg: "Firewall group ID {{ firewall.group_id }}"
+
   - name: Create an EC2 instance
     ec2_instance:
       key_name: keypair_default
