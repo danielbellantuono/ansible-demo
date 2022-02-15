@@ -52,14 +52,12 @@
   - debug:
       msg: "Firewall group ID {{ firewall.group_id }}"
 
-  - name: Create subnet for database servers
+  - name: Create subnet
     ec2_vpc_subnet:
       state: present
       region: "{{ aws_region }}"
       vpc_id: "{{ my_vpc.vpc.id }}"
       cidr: 10.10.10.0/24
-      tags:
-        Name: Subnet
     register: subnet
 
   - name: Create an EC2 instance
