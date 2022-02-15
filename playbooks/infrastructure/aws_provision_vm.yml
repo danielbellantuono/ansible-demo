@@ -67,7 +67,7 @@
       security_group: "{{ firewall.group_id }}"
       instance_type: "t2.micro"
       image_id: "{{ ami_id }}"
-      vpc_subnet_id: "{{ subnet.id }}"
+      vpc_subnet_id: subnet-03431254b046eae48
       wait: yes
       name: vm-demo
     register: ec2
