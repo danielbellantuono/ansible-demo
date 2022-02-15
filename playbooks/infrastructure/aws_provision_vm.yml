@@ -58,7 +58,7 @@
       region: "{{ aws_region }}"
       vpc_id: "{{ my_vpc.vpc.id }}"
       cidr: 10.10.10.0/24
-    register: subnet
+    register: my_subnet
 
   - name: Create an EC2 instance
     ec2_instance:
@@ -67,7 +67,8 @@
       security_group: "{{ firewall.group_id }}"
       instance_type: "t2.micro"
       image_id: "{{ ami_id }}"
-      vpc_subnet_id: subnet-03431254b046eae48
+      vpc_subnet_id: "{{ my_subnet.subnet.id }}"
       wait: yes
       name: vm-demo
+      assign_public_ip: yes
     register: ec2
