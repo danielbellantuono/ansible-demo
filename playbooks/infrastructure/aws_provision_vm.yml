@@ -22,6 +22,7 @@
     ec2_key:
       name: keypair_default
       region: "{{ aws_region }}"
+      key_material: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKGAWMhnBBUgK5vVLB77XqtrvY0Qk3Fye/bf2iNNNyjUVS3y8eNuP7vM5A0pS9hATJUU9GIva22XIe9p+Mm5BBX1qF09E2MbkKbk7OPMtmPDQxBo1jmwJlbawBwvGrpgQTBgMzFzaG5+CBTzsEji+UXWImCGO35XylIUkbIHSFvD995XK13aPhiWsje2k0rsS2wx6DOqXsAtIbPMoKrPnLaif/z76ir/Oj4kcBqObfvTUy1//oTTmj3quViDasnfSaoLeMGshT14LjjtGEvHiduh5877SU+z9nFEQw1MAnjxa9GX5kjEQjzH2Q5beZIwZWbx5d1ovmfB0WqY/V88SB daniel@MacBook-Pro'
 
   - name: Create VPC 
     ec2_vpc_net:
