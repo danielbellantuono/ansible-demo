@@ -75,7 +75,7 @@
       routes:
         - dest: 0.0.0.0/0
           gateway_id: "{{ ec2_internet_gateway.gateway_id }}"
-       subnets:
+      subnets:
         - 10.10.0.0/16
       vpc_id: "{{ my_vpc.vpc.id }}"
     register: ec2_route_table
