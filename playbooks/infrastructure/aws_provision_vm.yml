@@ -79,6 +79,11 @@
         - 10.10.0.0/16
       vpc_id: "{{ my_vpc.vpc.id }}"
     register: ec2_route_table
+    
+  - name: debug
+    debug: 
+      msg: "{{ route_table.route_tables[0].id }}"
+    
 
   - name: Create an EC2 instance
     ec2_instance:
