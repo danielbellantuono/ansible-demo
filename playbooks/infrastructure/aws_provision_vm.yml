@@ -56,7 +56,7 @@
     register: my_subnet
 
   - name: gather facts from route tables
-    ec2_vpc_route_table_facts:
+    ec2_vpc_route_table_info:
       filters:
         vpc-id: "{{ my_vpc.vpc.id }}"
       region: "{{ aws_region }}"
