@@ -55,30 +55,30 @@
       cidr: 10.10.10.0/24
     register: my_subnet
 
-   - name: gather facts from route tables
-     ec2_vpc_route_table_facts:
-       filters:
-         vpc-id: "{{ my_vpc.vpc.id }}"
-       region: "{{ aws_region }}"
-     register: route_table
+  - name: gather facts from route tables
+    ec2_vpc_route_table_facts:
+      filters:
+        vpc-id: "{{ my_vpc.vpc.id }}"
+      region: "{{ aws_region }}"
+    register: route_table
 
-   - name: create internet gateway
-     ec2_vpc_igw:
-       region: "{{ aws_region }}"
-       vpc_id: "{{ my_vpc.vpc.id }}"
-     register: ec2_internet_gateway
+  - name: create internet gateway
+    ec2_vpc_igw:
+      region: "{{ aws_region }}"
+      vpc_id: "{{ my_vpc.vpc.id }}"
+    register: ec2_internet_gateway
 
-   - name: create routing table
-     ec2_vpc_route_table:
-       region: "{{ aws_region }}"
-       route_table_id: "{{ route_table.route_tables[0].id }}"
-       routes:
-         - dest: 0.0.0.0/0
-           gateway_id: "{{ ec2_internet_gateway.gateway_id }}"
+  - name: create routing table
+    ec2_vpc_route_table:
+      region: "{{ aws_region }}"
+      route_table_id: "{{ route_table.route_tables[0].id }}"
+      routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{ ec2_internet_gateway.gateway_id }}"
        subnets:
-         - 10.10.0.0/16
-       vpc_id: "{{ my_vpc.vpc.id }}"
-     register: ec2_route_table
+        - 10.10.0.0/16
+      vpc_id: "{{ my_vpc.vpc.id }}"
+    register: ec2_route_table
 
   - name: Create an EC2 instance
     ec2_instance:
