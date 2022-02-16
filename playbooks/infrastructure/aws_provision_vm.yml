@@ -39,7 +39,7 @@
       vpc_id: "{{ my_vpc.vpc.id }}"
       rules:
         - proto: all
-          cidr_ip: 10.10.0.0/16
+          cidr_ip: 0.0.0.0/0
         - proto: all
           group_name: ansible
       rules_egress:
