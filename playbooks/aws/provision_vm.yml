@@ -10,13 +10,14 @@
 
   - name: Create an EC2 instance
     ec2_instance:
+      name: AWS-demo
       key_name: keypair_demo
       region: "{{ aws_region }}"
       security_group: "{{ firewall.group_id }}"
       instance_type: "t2.micro"
       image_id: "{{ ami_id }}"
       vpc_subnet_id: "{{ my_subnet.subnet.id }}"
-      name: vm-demo
+      wait: no
       network:
         assign_public_ip: true
     register: ec2
