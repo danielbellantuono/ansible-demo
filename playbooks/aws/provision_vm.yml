@@ -6,6 +6,8 @@
   collections:
     - amazon.aws
 
+  tasks:
+
   - name: Create an EC2 instance
     ec2_instance:
       key_name: keypair_demo
