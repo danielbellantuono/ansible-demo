@@ -23,9 +23,3 @@
       when: harden_ssh | bool
       include_role:
         name: dev-sec.ssh-hardening
-
-    # run with --skip-tags accounts_passwords_pam_faillock_deny
-    - name: Apply PCI Baseline
-      when: harden_pci | bool
-      include_role:
-        name: redhatofficial.rhel8_pci_dss
