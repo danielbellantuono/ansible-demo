@@ -1,5 +1,5 @@
 ---
-- name: build openscap report for rhel7
+- name: build openscap report for rhel8
   hosts: web
   gather_facts: false
 
