@@ -5,7 +5,7 @@
   vars:
     - harden_firewall: true
     - harden_time: true
-    - harden_ssh: true
+    - harden_ssh: false
     - harden_pci: false
 
   tasks:
